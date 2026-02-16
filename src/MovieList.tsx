@@ -1,4 +1,5 @@
 import { useEffect, useState } from 'react';
+import MovieCard from './MovieCard';
 
 type Movie = {
   id: string;
@@ -7,7 +8,7 @@ type Movie = {
   overview: string;
 };
 
-function App() {
+function MovieList() {
   const [keyword, setKeyword] = useState('');
   const [movieList, setMovieList] =useState<Movie[]>([]);
 
@@ -38,24 +39,15 @@ function App() {
 
   return (
     <>
-      <h1 className="my-12 font-bold text-2xl text-center">映画検索</h1>
-      <div className="w-sm mx-auto my-12 text-lg">
+      <div className="w-sm mx-auto py-12 text-lg">
         <span className="inline-block w-16 font-bold">検索: </span>
-        <input className="w-xs border" type="text" onChange={(e) => setKeyword(e.target.value)} />
+        <input className="w-xs border bg-white text-black" type="text" onChange={(e) => setKeyword(e.target.value)} />
       </div>
-      <div className="flex flex-wrap">
+      <div className="flex flex-wrap justify-around">
         {movieList
           .filter((movie) => movie.title.includes(keyword))
           .map((movie) => (
-            <div className="flex flex-wrap flex-1/2 my-3" key={movie.id}>
-              <div className="flex-2/3 px-6">
-                <h2 className="mb-3 font-bold text-lg">{movie.title}</h2>
-                <p className="text-sm">{movie.overview}</p>
-              </div>
-              <div className="flex-1/3">
-                <img className="aspect-5/8 object-cover" src={`https://image.tmdb.org/t/p/w500${movie.poster_path}`} alt={movie.title} />
-              </div>
-            </div>
+            <MovieCard key={movie.id} movie={movie} />
           ))
         }
       </div>
@@ -63,4 +55,4 @@ function App() {
   );
 }
 
-export default App;
+export default MovieList;
