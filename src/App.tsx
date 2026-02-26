@@ -1,4 +1,4 @@
-function Header({ children }: { children: React.ReactNode }) {
+function App({ children }: { children: React.ReactNode }) {
   return (
     <>
       <header className="m-0 py-4 bg-black text-white text-center">
@@ -11,4 +11,4 @@ function Header({ children }: { children: React.ReactNode }) {
   );
 }
 
-export default Header;
+export default App;

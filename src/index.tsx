@@ -1,8 +1,8 @@
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { createBrowserRouter, RouterProvider } from 'react-router';
-import './App.css';
-import Header from './Header.tsx';
+import './index.css';
+import App from './App.tsx';
 import MovieList from './MovieList.tsx';
 import MovieDetail from './MovieDetail.tsx';
 
@@ -13,8 +13,8 @@ const router = createBrowserRouter([
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <Header>
+    <App>
       <RouterProvider router={router} />
-    </Header>
+    </App>
   </StrictMode>
 );
